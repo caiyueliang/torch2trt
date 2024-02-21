@@ -686,11 +686,12 @@ def torch2trt(module,
         if len(dataset) == 0:
             raise ValueError('Dataset must have at least one element to use for inference.')
         inputs = dataset[0]
-    else:
-        dataset = ListDataset()
-        dataset.insert(inputs)
-        inputs = dataset[0]
+    # else:
+    #     dataset = ListDataset()
+    #     dataset.insert(inputs)
+    #     inputs = dataset[0]
 
+    print("[inputs] {}, {}".format(inputs, len(inputs)))
     print("[*inputs] {}".format(*inputs))
     outputs = module(*inputs)
     input_flattener = Flattener.from_value(inputs)
