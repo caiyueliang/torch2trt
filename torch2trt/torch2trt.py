@@ -691,6 +691,7 @@ def torch2trt(module,
         dataset.insert(inputs)
         inputs = dataset[0]
 
+    print("[*inputs] {}".format(*inputs))
     outputs = module(*inputs)
     input_flattener = Flattener.from_value(inputs)
     output_flattener = Flattener.from_value(outputs)
